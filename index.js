@@ -40,6 +40,9 @@ OurApp.post("/member/new", async (req, res) => {
       if(!result){
         return res.status(400).json({"error": "there is some problem completing the payment."})
       }
+      if(phone.length !== 10){
+        return res.status(400).json({"error" : "Phone number should have 10 digits"});
+      }
       const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
       const d = new Date();
       const m = d.getMonth();

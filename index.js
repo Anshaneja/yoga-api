@@ -91,7 +91,7 @@ OurApp.post("/member/new", async (req, res) => {
       .catch((err) => {
         console.log(err);
       });
-      return resjson({message: "success"});
+      return res.json({message: "success"});
     } catch (error) {
       return res.json({ error: error.message });
     }

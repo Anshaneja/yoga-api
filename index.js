@@ -13,13 +13,7 @@ OurApp.use(
     })
   );
 OurApp.use(bodyparser.json());
-OurApp.use(function (req, res, next) {
-  //Enabling CORS
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-    next();
-  });
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("connection established!"))
@@ -107,8 +101,9 @@ OurApp.post("/member/new", async (req, res) => {
   });
 
 
-
-  OurApp.listen(5000, () => {
-    console.log("Server is Up and Running");
+  const PORT = process.env.PORT || 5000;
+  // starting the server
+  OurApp.listen(PORT, () => {
+    console.log('listening');
   });
   

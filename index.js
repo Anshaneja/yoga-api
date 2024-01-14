@@ -26,9 +26,15 @@ OurApp.get("/", (request, response) => {
 });
 
 OurApp.post("/testingtimeouts", async(req, res) => {
-  await setTimeout(()=> console.log("waited for 7 mins"), 420000);
+  await wait(420000);
   res.json({ message: "success"});
 })
+
+async function wait(ms) {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
 
 function CompletePayment(){
     return true;

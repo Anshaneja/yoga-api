@@ -25,6 +25,11 @@ OurApp.get("/", (request, response) => {
   response.json({ message: "link working" });
 });
 
+OurApp.post("/testingtimeouts", async(req, res) => {
+  await setTimeout(()=> console.log("waited for 7 mins"), 420);
+  response.json({ message: "success"});
+})
+
 function CompletePayment(){
     return true;
 }
